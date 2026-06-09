@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAYSTATION | Gaming Lounge & Cafe</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* ===== MODERN GAMING COLOR THEME ===== */
+        :root {
+            /* 🎮 VIBRANT GAMING COLORS */
+            --primary: #0f172a;          /* Dark Blue Base */
+            --secondary: #1e293b;        /* Lighter Blue */
+            --accent: #3b82f6;           /* Bright Blue (Gaming Feel) */
+            --accent2: #ef4444;          /* Red for alerts */
+            --accent3: #10b981;          /* Green for online status */
+            --accent4: #f59e0b;          /* Gold/Yellow */
+            
+            /* 🏆 LIGHT MODE READY */
+            --text: #ffffff;
+            --text-muted: #cbd5e1;
+            --light-bg: #f8fafc;
+            --light-card: #ffffff;
+            --light-text: #1e293b;
+            
+            /* 🎪 UI ELEMENTS */
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.2);
+            
+            /* 🌈 GRADIENTS */
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+            --gradient-card: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            
+            /* 📱 BORDER RADIUS */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            
+            /* ⚡ TRANSITIONS */
+            --transition: all 0.3s ease;
+            --transition-slow: all 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* 🔥 GAMING TYPOGRAPHY */
+        h1, h2, h3, h4, h5, .gaming-font {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .gaming-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gaming-badge {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* 🎮 NAVIGATION */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .navbar-brand span {
+            color: var(--accent2);
+        }
+
+        .nav-link {
+            color: var(--text) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* 🎯 BUTTONS */
+        .btn-gaming {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gaming:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+
+        .btn-gaming-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 28px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-gaming-outline:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* 🏆 HERO SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-card);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        /* 📊 STATS */
+        .stats-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            border: 1px solid var(--card-border);
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 🎪 FEATURES SECTION */
+        .features-section {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: var(--gradient-card);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .feature-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* 🎮 GAMING ZONES */
+        .gaming-zones {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+        }
+
+        .zone-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .zone-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .zone-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .zone-content {
+            padding: 25px;
+        }
+
+        .zone-category {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .zone-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .zone-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .zone-features li {
+            padding: 5px 0;
+            color: #64748b;
+        }
+
+        .zone-features li i {
+            color: var(--accent3);
+            margin-right: 10px;
+        }
+
+        .zone-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .zone-price span {
+            font-size: 1rem;
+            color: #64748b;
+        }
+
+        /* 🏆 TOURNAMENTS */
+        .tournaments-section {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .tournament-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            margin-bottom: 30px;
+        }
+
+        .tournament-header {
+            background: var(--gradient-primary);
+            padding: 20px;
+            color: white;
+        }
+
+        .tournament-date {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .tournament-body {
+            padding: 25px;
+        }
+
+        .tournament-game {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .tournament-prize {
+            color: var(--accent4);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .tournament-details {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .tournament-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .status-live {
+            background: var(--accent2);
+            color: white;
+        }
+
+        .status-upcoming {
+            background: var(--accent3);
+            color: white;
+        }
+
+        /* 📱 DEVICE SHOWCASE */
+        .devices-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+        }
+
+        .device-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .device-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .device-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .device-specs {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .device-specs li {
+            padding: 8px 0;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .device-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .device-specs li i {
+            color: var(--accent3);
+            margin-right: 10px;
+        }
+
+        /* 👥 COMMUNITY */
+        .community-section {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .community-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .community-stat {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .community-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .community-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* 📞 CONTACT */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .contact-info {
+            background: var(--gradient-card);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            color: white;
+            height: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* 🏢 FOOTER */
+        .footer {
+            background: #0f172a;
+            padding: 70px 0 30px;
+            border-top: 2px solid var(--accent);
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 300px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-heading {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+        }
+
+        /* 🎮 LIVE STATS BAR */
+        .live-stats {
+            background: var(--gradient-primary);
+            padding: 15px 0;
+        }
+
+        .live-stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .live-stat-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .live-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* 📱 RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .feature-card, .zone-card, .tournament-card {
+                margin-bottom: 30px;
+            }
+            
+            .stats-container {
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* ✨ ANIMATIONS */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-gamepad me-2"></i>PLAY<span>STATION</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#zones">Gaming Zones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tournaments">Tournaments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#devices">Devices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-gaming" onclick="bookNow()">
+                            <i class="fas fa-crown me-2"></i> Book Now
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-right">
+                    <h1 class="hero-title gaming-gradient">
+                        Ultimate <span class="text-white">Gaming</span> Experience
+                    </h1>
+                    <p class="hero-subtitle">
+                        Join India's premier gaming lounge with state-of-the-art setups, 
+                        professional tournaments, and an amazing community of gamers.
+                    </p>
+                    
+                    <div class="d-flex gap-3 mb-4">
+                        <button class="btn btn-gaming pulse" onclick="bookNow()">
+                            <i class="fas fa-rocket me-2"></i> Book Your Seat
+                        </button>
+                        <button class="btn btn-gaming-outline" onclick="viewTournaments()">
+                            <i class="fas fa-trophy me-2"></i> View Tournaments
+                        </button>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="stats-container" data-aos="fade-up" data-aos-delay="300">
+                        <div class="row">
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <h3 class="stat-number" data-count="120">0</h3>
+                                    <p class="stat-label">Gaming PCs</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <h3 class="stat-number" data-count="15">0</h3>
+                                    <p class="stat-label">VR Setups</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <h3 class="stat-number" data-count="50">0</h3>
+                                    <p class="stat-label">Tournaments</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <h3 class="stat-number" data-count="1000">0</h3>
+                                    <p class="stat-label">Happy Gamers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="floating">
+                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Gaming Setup" class="img-fluid rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stats Bar -->
+    <div class="live-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="live-stat-item">
+                        <div class="live-stat-number" id="online-now">245</div>
+                        <div class="live-stat-label">Online Now</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="live-stat-item">
+                        <div class="live-stat-number" id="pcs-available">38</div>
+                        <div class="live-stat-label">PCs Available</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="live-stat-item">
+                        <div class="live-stat-number" id="live-tournaments">3</div>
+                        <div class="live-stat-label">Live Tournaments</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="live-stat-item">
+                        <div class="live-stat-number">24/7</div>
+                        <div class="live-stat-label">Open Hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="gaming-gradient display-4 mb-3">Why Choose Us?</h2>
+                <p class="text-muted">Experience gaming like never before</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="feature-title">High-Speed Gaming</h3>
+                        <p class="feature-description">
+                            RTX 4090 GPUs, 240Hz monitors, and fiber internet for lag-free gaming experience.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Gaming Community</h3>
+                        <p class="feature-description">
+                            Join tournaments, make friends, and be part of India's largest gaming community.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <h3 class="feature-title">Premium Services</h3>
+                        <p class="feature-description">
+                            Food & beverages, coaching sessions, and professional streaming setups.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gaming Zones -->
+    <section id="zones" class="gaming-zones">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="gaming-gradient display-4 mb-3">Gaming Zones</h2>
+                <p class="text-muted">Choose your perfect gaming setup</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="zone-card">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Pro Gaming" class="zone-image">
+                        <div class="zone-content">
+                            <div class="zone-category">PRO GAMING</div>
+                            <h3 class="zone-title">High-End PC Zone</h3>
+                            <ul class="zone-features">
+                                <li><i class="fas fa-check"></i> RTX 4090 Graphics</li>
+                                <li><i class="fas fa-check"></i> 240Hz G-SYNC Monitors</li>
+                                <li><i class="fas fa-check"></i> Mechanical Keyboard</li>
+                                <li><i class="fas fa-check"></i> Gaming Mouse & Headset</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="zone-price">₹149 <span>/hour</span></div>
+                                <button class="btn btn-gaming btn-sm">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="zone-card">
+                        <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="VR Gaming" class="zone-image">
+                        <div class="zone-content">
+                            <div class="zone-category">VR EXPERIENCE</div>
+                            <h3 class="zone-title">Virtual Reality Arena</h3>
+                            <ul class="zone-features">
+                                <li><i class="fas fa-check"></i> Meta Quest Pro</li>
+                                <li><i class="fas fa-check"></i> Full Body Tracking</li>
+                                <li><i class="fas fa-check"></i> Wireless Headsets</li>
+                                <li><i class="fas fa-check"></i> 50+ VR Games</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="zone-price">₹199 <span>/hour</span></div>
+                                <button class="btn btn-gaming btn-sm">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="zone-card">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Console Gaming" class="zone-image">
+                        <div class="zone-content">
+                            <div class="zone-category">CONSOLE LOUNGE</div>
+                            <h3 class="zone-title">Console Gaming Zone</h3>
+                            <ul class="zone-features">
+                                <li><i class="fas fa-check"></i> PS5 & Xbox Series X</li>
+                                <li><i class="fas fa-check"></i> 4K OLED TVs</li>
+                                <li><i class="fas fa-check"></i> 500+ Games Library</li>
+                                <li><i class="fas fa-check"></i> Comfortable Seating</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="zone-price">₹99 <span>/hour</span></div>
+                                <button class="btn btn-gaming btn-sm">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournaments -->
+    <section id="tournaments" class="tournaments-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="gaming-gradient display-4 mb-3">Upcoming Tournaments</h2>
+                <p class="text-muted">Compete and win amazing prizes</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tournament-card">
+                        <div class="tournament-header">
+                            <h4 class="mb-2">VALORANT CHAMPIONSHIP</h4>
+                            <div class="tournament-date">
+                                <i class="far fa-calendar"></i>
+                                <span>Dec 25, 2023 | 6:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="tournament-body">
+                            <div class="tournament-game">
+                                <i class="fas fa-gamepad me-2"></i> Valorant - 5v5 Tournament
+                            </div>
+                            <div class="tournament-prize">
+                                <i class="fas fa-trophy me-2"></i> ₹50,000 Prize Pool
+                            </div>
+                            <p class="tournament-details">
+                                Team tournament with group stages and knockout rounds. 
+                                Open for all skill levels.
+                            </p>
+                            <div>
+                                <span class="tournament-status status-upcoming">Registration Open</span>
+                                <span class="tournament-status status-live">Team Event</span>
+                            </div>
+                            <button class="btn btn-gaming w-100 mt-3">Register Team</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tournament-card">
+                        <div class="tournament-header">
+                            <h4 class="mb-2">FIFA 24 TOURNAMENT</h4>
+                            <div class="tournament-date">
+                                <i class="far fa-calendar"></i>
+                                <span>Jan 5, 2024 | 4:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="tournament-body">
+                            <div class="tournament-game">
+                                <i class="fas fa-futbol me-2"></i> FIFA 24 - 1v1 Tournament
+                            </div>
+                            <div class="tournament-prize">
+                                <i class="fas fa-trophy me-2"></i> ₹25,000 Prize Pool
+                            </div>
+                            <p class="tournament-details">
+                                Single elimination tournament. Bring your A-game and compete 
+                                for the championship title.
+                            </p>
+                            <div>
+                                <span class="tournament-status status-upcoming">Starting Soon</span>
+                                <span class="tournament-status">64 Players</span>
+                            </div>
+                            <button class="btn btn-gaming w-100 mt-3">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Devices Showcase -->
+    <section id="devices" class="devices-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="gaming-gradient display-4 mb-3">Premium Hardware</h2>
+                <p class="text-muted">We use only the best gaming equipment</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="device-card">
+                        <div class="device-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h4>Gaming PCs</h4>
+                        <p class="text-muted">High-performance rigs for competitive gaming</p>
+                        <ul class="device-specs">
+                            <li><i class="fas fa-microchip"></i> Intel i9 13900K</li>
+                            <li><i class="fas fa-gamepad"></i> RTX 4090 24GB</li>
+                            <li><i class="fas fa-memory"></i> 32GB DDR5 RAM</li>
+                            <li><i class="fas fa-hdd"></i> 2TB NVMe SSD</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="device-card">
+                        <div class="device-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h4>VR Equipment</h4>
+                        <p class="text-muted">Immersive virtual reality experiences</p>
+                        <ul class="device-specs">
+                            <li><i class="fas fa-headset"></i> Meta Quest Pro</li>
+                            <li><i class="fas fa-expand-arrows-alt"></i> 5x5m Play Area</li>
+                            <li><i class="fas fa-gamepad"></i> Wireless Controllers</li>
+                            <li><i class="fas fa-video"></i> Full Body Tracking</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="device-card">
+                        <div class="device-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h4>Peripherals</h4>
+                        <p class="text-muted">Top-tier gaming accessories</p>
+                        <ul class="device-specs">
+                            <li><i class="fas fa-keyboard"></i> Mechanical Keyboards</li>
+                            <li><i class="fas fa-mouse"></i> Gaming Mice (16000 DPI)</li>
+                            <li><i class="fas fa-headphones"></i> 7.1 Surround Sound</li>
+                            <li><i class="fas fa-tachometer-alt"></i> 240Hz Monitors</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="gaming-gradient display-4 mb-3">Join Our Community</h2>
+                <p class="text-muted">Be part of something amazing</p>
+            </div>
+            
+            <div class="community-stats">
+                <div class="community-stat" data-aos="fade-up" data-aos-delay="100">
+                    <div class="community-number">2,500+</div>
+                    <div class="community-label">Active Members</div>
+                </div>
+                <div class="community-stat" data-aos="fade-up" data-aos-delay="200">
+                    <div class="community-number">150+</div>
+                    <div class="community-label">Teams Created</div>
+                </div>
+                <div class="community-stat" data-aos="fade-up" data-aos-delay="300">
+                    <div class="community-number">₹10L+</div>
+                    <div class="community-label">Prize Money Distributed</div>
+                </div>
+                <div class="community-stat" data-aos="fade-up" data-aos-delay="400">
+                    <div class="community-number">50+</div>
+                    <div class="community-label">Monthly Events</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5" data-aos="fade-up">
+                <button class="btn btn-gaming me-3">
+                    <i class="fab fa-discord me-2"></i> Join Discord
+                </button>
+                <button class="btn btn-gaming-outline">
+                    <i class="fab fa-whatsapp me-2"></i> WhatsApp Group
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="contact-form">
+                        <h3 class="gaming-gradient mb-4">Book Your Gaming Session</h3>
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Phone Number" required>
+                                </div>
+                            </div>
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                            <select class="form-control">
+                                <option>Select Gaming Zone</option>
+                                <option>Pro Gaming Zone (₹149/hr)</option>
+                                <option>VR Experience (₹199/hr)</option>
+                                <option>Console Lounge (₹99/hr)</option>
+                                <option>VIP Booth (₹299/hr)</option>
+                            </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" class="form-control" required>
+                                </div>
+                            </div>
+                            <textarea class="form-control" rows="4" placeholder="Special Requirements"></textarea>
+                            <button type="submit" class="btn btn-gaming w-100 mt-3">
+                                <i class="fas fa-calendar-check me-2"></i> Confirm Booking
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Address</h5>
+                                <p>123 Gaming Street, Mumbai, Maharashtra</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@playstationlounge.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Opening Hours</h5>
+                                <p>Mon-Fri: 10 AM - 2 AM<br>Sat-Sun: 24 Hours Open</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h5 class="mb-3">Follow Us</h5>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitch"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">PLAYSTATION</div>
+                    <p class="footer-description">
+                        India's premier gaming destination with state-of-the-art facilities, 
+                        professional tournaments, and an amazing community.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#zones">Gaming Zones</a></li>
+                        <li><a href="#tournaments">Tournaments</a></li>
+                        <li><a href="#devices">Devices</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="footer-heading">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">PC Gaming</a></li>
+                        <li><a href="#">VR Experience</a></li>
+                        <li><a href="#">Console Gaming</a></li>
+                        <li><a href="#">Tournaments</a></li>
+                        <li><a href="#">Coaching</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="footer-heading">Newsletter</h5>
+                    <p class="footer-description">
+                        Subscribe to get updates on tournaments, offers, and events.
+                    </p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-gaming">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 PLAYSTATION Gaming Lounge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Animate counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const increment = target / speed;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.ceil(current);
+                        setTimeout(updateCounter, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Live stats update
+        function updateLiveStats() {
+            const onlineNow = document.getElementById('online-now');
+            const pcsAvailable = document.getElementById('pcs-available');
+            const liveTournaments = document.getElementById('live-tournaments');
+            
+            setInterval(() => {
+                onlineNow.textContent = Math.floor(200 + Math.random() * 100);
+                pcsAvailable.textContent = Math.floor(20 + Math.random() * 25);
+                liveTournaments.textContent = Math.floor(1 + Math.random() * 5);
+            }, 3000);
+        }
+
+        // Book now function
+        function bookNow() {
+            alert('🎮 Redirecting to booking page...\n\nThis feature would connect to booking system.');
+        }
+
+        // View tournaments
+        function viewTournaments() {
+            document.getElementById('tournaments').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Form submission
+        document.getElementById('bookingForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Booking request sent successfully!\n\nWe will contact you shortly to confirm your gaming session.');
+            this.reset();
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(animateCounters, 500);
+            updateLiveStats();
+            
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Navbar background on scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+                    navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+                } else {
+                    navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                    navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
